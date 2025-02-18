@@ -3,4 +3,18 @@ src = "src"
 out = "out"
 libs = ["lib"]
 
-# See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
+solc = "0.8.28"
+optimizer = true
+optimizer_runs = 20_000
+
+remappings = [
+    "forge-std/=lib/forge-std/src/",
+    "interfaces/=interfaces/",
+    "@openzeppelin/=lib/openzeppelin-contracts@v5.2.0/",
+]
+
+[profile.ci]
+verbosity = 4
+
+[rpc_endpoints]
+local = "http://localhost:8545"

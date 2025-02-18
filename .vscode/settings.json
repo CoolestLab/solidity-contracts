@@ -1,0 +1,7 @@
+{
+    "solidity.remappings": [
+        "@openzeppelin=lib/openzeppelin-contracts@v5.2.0/contracts",
+        "@openzeppelin/contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable@v5.2.0/contracts",
+        "forge-std=lib/forge-std/src"
+    ]
+}
