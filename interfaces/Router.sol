@@ -30,3 +30,8 @@ interface IUniswapRouter2 {
         view
         returns (uint256[] memory amounts);
 }
+
+interface IUniswapPair {
+    function token0() external view returns (address);
+    function token1() external view returns (address);
+}

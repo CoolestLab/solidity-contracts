@@ -5,6 +5,7 @@ import {console, Script} from "forge-std/Script.sol";
 import {TransparentUpgradeableProxy} from "@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol";
 
 import {FlashSwap} from "../src/FlashSwap.sol";
+import {Pool} from "../src/FlashPool.sol";
 
 contract MyScript is Script {
     function setUp() public {
@@ -20,7 +21,17 @@ contract MyScript is Script {
         vm.startBroadcast(_signer);
         console.log("[Signer] signer:", _signer);
 
-        FlashSwap _fs = new FlashSwap();
+        Pool _fp = new Pool();
+        console.log("[Contract] FlashPool:", address(_fp));
+
+        _fp.setTokenPool(
+            address(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c), address(0x172fcD41E0913e95784454622d1c3724f546f849)
+        );
+        _fp.setTokenPool(
+            address(0x55d398326f99059fF775485246999027B3197955), address(0x172fcD41E0913e95784454622d1c3724f546f849)
+        );
+
+        FlashSwap _fs = new FlashSwap(address(_fp));
         console.log("[Contract] FlashSwap:", address(_fs));
 
         vm.stopBroadcast();

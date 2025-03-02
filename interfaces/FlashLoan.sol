@@ -33,3 +33,13 @@ interface IFlashLoanBalancer {
         bytes memory userData
     ) external;
 }
+
+// ------ FlashPool ------
+
+interface IFlashPool {
+    function flash(address _token, uint256 _amount, bytes calldata _data) external;
+}
+
+interface IFlashPoolCallback {
+    function flashCallback(uint256 _fee, bytes calldata _data) external;
+}
