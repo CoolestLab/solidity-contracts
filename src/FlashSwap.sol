@@ -27,7 +27,7 @@ contract FlashSwap is Ownable, IFlashPoolCallback {
         return pancake.getAmountsOut(amountIn, _path);
     }
 
-    function swap_4491f745(address[] calldata _path, uint256 _amount) public onlyOwner {
+    function swap_1712bab50(address[] calldata _path, uint256 _amount) public onlyOwner {
         uint256[] memory _got = pancake.getAmountsOut(_amount, _path);
         require(_got[_path.length - 1] > _amount, "no profit");
         pool.flash(_path[0], _amount, abi.encode(_path, _amount));
